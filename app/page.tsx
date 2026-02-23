@@ -1,5 +1,8 @@
 "use client";
 
+import PickAMessage from "./components/PickAMessage";
+import MemoryGame from "./components/MemoryGame";
+
 const ROSE = "🌹";
 const MONKEY = "🐒";
 const HEART = "💕";
@@ -96,6 +99,12 @@ export default function Home() {
             </ul>
           </div>
         </section>
+
+        {/* Pick a message */}
+        <PickAMessage />
+
+        {/* Memory game */}
+        <MemoryGame />
 
         {/* Roses for you */}
         <section className="mt-12 opacity-0 animate-fade-in stagger-7">
