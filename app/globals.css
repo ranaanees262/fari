@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #fdf8f3;
+  --blush: #f5e6e0;
+  --rose: #e8b4b8;
+  --dusty-rose: #c9a9a6;
+  --sage: #b5c4b8;
+  --deep-rose: #9d7b7e;
+  --gold: #d4a574;
+  --text-soft: #5c4a4a;
+  --text-deep: #3d3232;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(165deg, var(--cream) 0%, var(--blush) 40%, #f0e8e4 100%);
+  min-height: 100vh;
+}
+
+/* Stagger animation delays for children */
+.stagger-1 { animation-delay: 0.2s; }
+.stagger-2 { animation-delay: 0.4s; }
+.stagger-3 { animation-delay: 0.6s; }
+.stagger-4 { animation-delay: 0.8s; }
+.stagger-5 { animation-delay: 1s; }
+.stagger-6 { animation-delay: 1.2s; }
+.stagger-7 { animation-delay: 1.4s; }
+.stagger-8 { animation-delay: 1.6s; }
+.stagger-9 { animation-delay: 1.8s; }
+.stagger-10 { animation-delay: 2s; }
+.stagger-11 { animation-delay: 2.2s; }
+.stagger-12 { animation-delay: 2.4s; }
+.stagger-13 { animation-delay: 2.6s; }
+.stagger-14 { animation-delay: 2.8s; }
+.stagger-15 { animation-delay: 3s; }
+.stagger-16 { animation-delay: 3.2s; }
+.stagger-17 { animation-delay: 3.4s; }
+
+/* Emoji decoration */
+.emoji-float {
+  display: inline-block;
+  animation: float 5s ease-in-out infinite;
+}
+.emoji-float:nth-child(2) { animation-delay: 0.5s; }
+.emoji-float:nth-child(3) { animation-delay: 1s; }
+.emoji-float:nth-child(4) { animation-delay: 1.5s; }
+.emoji-float:nth-child(5) { animation-delay: 2s; }
+.emoji-float:nth-child(6) { animation-delay: 2.5s; }
+.emoji-float:nth-child(7) { animation-delay: 3s; }
+.emoji-float:nth-child(8) { animation-delay: 3.5s; }
+.emoji-float:nth-child(9) { animation-delay: 4s; }
+
+/* Soft decorative blob */
+.blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 12s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
