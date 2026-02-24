@@ -26,6 +26,18 @@ const NavBar = () => {
           <span className="mr-1">📝</span>
           Todos
         </NavItem>
+        <NavItem href="/vision-board" active={isActive("/vision-board")}>
+          <span className="mr-1">🌈</span>
+          Vision Board
+        </NavItem>
+        <NavItem href="/dear-diary" active={isActive("/dear-diary")}>
+          <span className="mr-1">📖</span>
+          Dear Diary
+        </NavItem>
+        <NavItem href="/play-area" active={isActive("/play-area")}>
+          <span className="mr-1">🎮</span>
+          Play Area
+        </NavItem>
       </nav>
     </header>
   );
@@ -41,11 +53,10 @@ const NavItem = ({ href, active, children }: NavItemProps) => {
   return (
     <Link
       href={href}
-      className={`inline-flex items-center rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all ${
-        active
-          ? "bg-[var(--rose)] text-[var(--text-deep)] shadow-sm"
-          : "text-[var(--text-soft)] hover:bg-[var(--blush)]/70"
-      }`}
+      className={`inline-flex items-center rounded-full px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all ${active
+        ? "bg-[var(--rose)] text-[var(--text-deep)] shadow-sm"
+        : "text-[var(--text-soft)] hover:bg-[var(--blush)]/70"
+        }`}
     >
       {children}
     </Link>

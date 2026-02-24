@@ -5,6 +5,7 @@ type Todo = {
   id: string;
   title: string;
   completed: boolean;
+  createdAt: string | null;
 };
 
 export async function GET() {
@@ -22,6 +23,7 @@ export async function GET() {
       id: todo._id.toString(),
       title: todo.title ?? "",
       completed: Boolean(todo.completed),
+      createdAt: todo.createdAt ? new Date(todo.createdAt).toISOString() : null,
     }));
 
     return NextResponse.json(data);
@@ -43,16 +45,18 @@ export async function POST(request: Request) {
     const client = await clientPromise;
     const db = client.db();
 
+    const now = new Date();
     const result = await db.collection("todos").insertOne({
       title,
       completed: false,
-      createdAt: new Date(),
+      createdAt: now,
     });
 
     const todo: Todo = {
       id: result.insertedId.toString(),
       title,
       completed: false,
+      createdAt: now.toISOString(),
     };
 
     return NextResponse.json(todo, { status: 201 });

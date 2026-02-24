@@ -1,7 +1,7 @@
 "use client";
 
-import PickAMessage from "./components/PickAMessage";
-import MemoryGame from "./components/MemoryGame";
+import { motion } from "framer-motion";
+import MagicMirror from "./components/MagicMirror";
 
 const ROSE = "🌹";
 const MONKEY = "🐒";
@@ -12,21 +12,6 @@ const SPARKLE = "✨";
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Soft background blobs */}
-      <div
-        className="blob absolute -top-40 -right-40 w-[500px] h-[500px] bg-[var(--rose)]/20 animate-float"
-        aria-hidden
-      />
-      <div
-        className="blob absolute top-1/2 -left-32 w-[400px] h-[400px] bg-[var(--sage)]/15"
-        aria-hidden
-      />
-      <div
-        className="blob absolute bottom-20 right-1/4 w-[300px] h-[300px] bg-[var(--gold)]/10 animate-float"
-        style={{ animationDelay: "2s" }}
-        aria-hidden
-      />
-
       <div className="relative z-10 max-w-2xl mx-auto px-6 py-16 sm:py-24">
         {/* Emoji strip */}
         <div className="flex justify-center gap-2 sm:gap-3 mb-8 opacity-0 animate-fade-in stagger-1" aria-hidden>
@@ -55,12 +40,17 @@ export default function Home() {
           </p>
         </header>
 
+        {/* Magic Mirror Section - Prominent on Home */}
+        <section className="mb-20 opacity-0 animate-fade-in-up stagger-3">
+          <MagicMirror />
+        </section>
+
         {/* Main message cards */}
         <section className="space-y-8">
           {[
-            { title: "Love", emoji: ROSE, text: "You deserve to be loved fully—not in pieces, not conditionally. Your heart is precious, and it deserves to be held gently and celebrated every day.", delay: "stagger-3" },
-            { title: "Care", emoji: HEART, text: "You deserve to be taken care of. Rest when you need to. Say no when you need to. Let people show up for you the way you show up for others.", delay: "stagger-4" },
-            { title: "Respect", emoji: BLOSSOM, text: "You deserve to be respected—your time, your boundaries, your feelings, your dreams. Never settle for less than someone who sees how incredible you are.", delay: "stagger-5" },
+            { title: "Love", emoji: ROSE, text: "You deserve to be loved fully—not in pieces, not conditionally. Your heart is precious, and it deserves to be held gently and celebrated every day.", delay: "stagger-4" },
+            { title: "Care", emoji: HEART, text: "You deserve to be taken care of. Rest when you need to. Say no when you need to. Let people show up for you the way you show up for others.", delay: "stagger-5" },
+            { title: "Respect", emoji: BLOSSOM, text: "You deserve to be respected—your time, your boundaries, your feelings, your dreams. Never settle for less than someone who sees how incredible you are.", delay: "stagger-6" },
           ].map((item) => (
             <article
               key={item.title}
@@ -78,7 +68,7 @@ export default function Home() {
         </section>
 
         {/* You are... affirmations */}
-        <section className="mt-20 opacity-0 animate-fade-in-up stagger-6">
+        <section className="mt-20 opacity-0 animate-fade-in-up stagger-7">
           <div className="bg-gradient-to-br from-[var(--rose)]/15 to-[var(--blush)]/40 rounded-2xl p-8 sm:p-10 border border-[var(--rose)]/30">
             <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[var(--deep-rose)] text-center mb-6">
               {ROSE} You are {ROSE}
@@ -100,14 +90,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pick a message */}
-        <PickAMessage />
-
-        {/* Memory game */}
-        <MemoryGame />
-
         {/* Roses for you */}
-        <section className="mt-12 opacity-0 animate-fade-in stagger-7">
+        <section className="mt-12 opacity-0 animate-fade-in stagger-8">
           <div className="text-center py-8">
             <p className="font-serif text-2xl sm:text-3xl text-[var(--deep-rose)] italic">
               Roses for you, Fariha
@@ -119,7 +103,7 @@ export default function Home() {
         </section>
 
         {/* Remember */}
-        <section className="mt-8 opacity-0 animate-fade-in-up stagger-8">
+        <section className="mt-8 opacity-0 animate-fade-in-up stagger-9">
           <article className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(157,123,126,0.08)] border border-[var(--blush)]/80">
             <h2 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--deep-rose)] mb-4 flex items-center gap-2">
               {MONKEY} Remember, Punch
@@ -131,7 +115,7 @@ export default function Home() {
         </section>
 
         {/* It's okay to... */}
-        <section className="mt-12 opacity-0 animate-fade-in-up stagger-9">
+        <section className="mt-12 opacity-0 animate-fade-in-up stagger-10">
           <article className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(157,123,126,0.1)] border border-[var(--blush)]/80">
             <h2 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--deep-rose)] mb-5 flex items-center gap-2">
               {BLOSSOM} It’s okay to…
@@ -148,7 +132,7 @@ export default function Home() {
         </section>
 
         {/* Good days ahead */}
-        <section className="mt-12 opacity-0 animate-fade-in stagger-10">
+        <section className="mt-12 opacity-0 animate-fade-in stagger-11">
           <div className="text-center py-10 px-6 bg-gradient-to-br from-[var(--sage)]/20 to-[var(--cream)]/80 rounded-2xl border border-[var(--sage)]/30">
             <p className="font-serif text-2xl sm:text-3xl text-[var(--deep-rose)]">
               {SPARKLE} Good days are ahead {SPARKLE}
@@ -160,7 +144,7 @@ export default function Home() {
         </section>
 
         {/* When you need a reminder */}
-        <section className="mt-12 opacity-0 animate-fade-in-up stagger-11">
+        <section className="mt-12 opacity-0 animate-fade-in-up stagger-12">
           <article className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(157,123,126,0.08)] border border-[var(--blush)]/80">
             <h2 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--deep-rose)] mb-5 flex items-center gap-2">
               {ROSE} When you need a reminder
@@ -176,7 +160,7 @@ export default function Home() {
         </section>
 
         {/* You matter */}
-        <section className="mt-12 opacity-0 animate-fade-in stagger-12">
+        <section className="mt-12 opacity-0 animate-fade-in stagger-13">
           <div className="text-center py-10 px-6 rounded-2xl bg-[var(--rose)]/15 border border-[var(--rose)]/25">
             <p className="font-serif text-3xl sm:text-4xl font-semibold text-[var(--deep-rose)]">
               You matter, Fariha. {HEART}
@@ -188,7 +172,7 @@ export default function Home() {
         </section>
 
         {/* For the tough days */}
-        <section className="mt-12 opacity-0 animate-fade-in-up stagger-13">
+        <section className="mt-12 opacity-0 animate-fade-in-up stagger-14">
           <article className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(157,123,126,0.1)] border border-[var(--blush)]/80">
             <h2 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--deep-rose)] mb-4 flex items-center gap-2">
               {MONKEY} For the tough days
@@ -200,7 +184,7 @@ export default function Home() {
         </section>
 
         {/* Closing note */}
-        <footer className="mt-20 text-center opacity-0 animate-fade-in stagger-14">
+        <footer className="mt-20 text-center opacity-0 animate-fade-in stagger-15">
           <p className="font-serif text-xl sm:text-2xl text-[var(--text-deep)]/90 italic">
             Things have been hard. I see you.
           </p>

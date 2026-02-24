@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { Cormorant_Garamond, Outfit, Caveat } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
+import PinGate from "./components/PinGate";
+import GlobalBackground from "./components/GlobalBackground";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -15,6 +17,12 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-caveat",
+});
+
 export const metadata: Metadata = {
   title: "For Fariha — You Deserve Everything 🌹",
   description: "For Punch — a gentle reminder that you are worthy of love, care, and respect.",
@@ -26,10 +34,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${caveat.variable}`}>
       <body className="font-sans antialiased text-[var(--text-deep)]">
-        <NavBar />
-        {children}
+        <PinGate>
+          <GlobalBackground />
+          <NavBar />
+          {children}
+        </PinGate>
       </body>
     </html>
   );

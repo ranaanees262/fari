@@ -1,34 +1,35 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-a7f1c6512654c8e1.js",
-      "static/chunks/fd9d1056-c520563bb0be96a5.js",
-      "static/chunks/117-9952fd6bd2004676.js",
-      "static/chunks/main-app-77788c7c8ec2552b.js",
-      "static/chunks/app/_not-found/page-572d89080e0f8c2f.js"
+    "/vision-board/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/vision-board/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-a7f1c6512654c8e1.js",
-      "static/chunks/fd9d1056-c520563bb0be96a5.js",
-      "static/chunks/117-9952fd6bd2004676.js",
-      "static/chunks/main-app-77788c7c8ec2552b.js",
-      "static/css/eb605267808c1607.css",
-      "static/chunks/39-2a1ac7f7eacf158a.js",
-      "static/chunks/app/layout-bfbe5e3760736577.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-a7f1c6512654c8e1.js",
-      "static/chunks/fd9d1056-c520563bb0be96a5.js",
-      "static/chunks/117-9952fd6bd2004676.js",
-      "static/chunks/main-app-77788c7c8ec2552b.js",
-      "static/chunks/app/page-110b0b6eefc6a323.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/todos/page": [
-      "static/chunks/webpack-a7f1c6512654c8e1.js",
-      "static/chunks/fd9d1056-c520563bb0be96a5.js",
-      "static/chunks/117-9952fd6bd2004676.js",
-      "static/chunks/main-app-77788c7c8ec2552b.js",
-      "static/chunks/app/todos/page-aafc136bdd98cdcd.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/todos/page.js"
+    ],
+    "/dear-diary/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/dear-diary/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/play-area/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/play-area/page.js"
     ]
   }
 }

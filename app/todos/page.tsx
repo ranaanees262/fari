@@ -6,6 +6,7 @@ type Todo = {
   id: string;
   title: string;
   completed: boolean;
+  createdAt: string | null;
 };
 
 export default function TodosPage() {
@@ -13,6 +14,12 @@ export default function TodosPage() {
   const [newTitle, setNewTitle] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const formatDate = (iso: string | null) => {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -129,13 +136,20 @@ export default function TodosPage() {
                   >
                     {todo.completed ? "✓" : ""}
                   </button>
-                  <span
-                    className={`font-sans text-sm sm:text-base text-[var(--text-deep,#4a3b3d)] ${
-                      todo.completed ? "line-through opacity-60" : ""
-                    }`}
-                  >
-                    {todo.title}
-                  </span>
+                  <div className="flex-1">
+                    <span
+                      className={`font-sans text-sm sm:text-base text-[var(--text-deep,#4a3b3d)] ${
+                        todo.completed ? "line-through opacity-60" : ""
+                      }`}
+                    >
+                      {todo.title}
+                    </span>
+                    {todo.createdAt && (
+                      <div className="text-[11px] text-[var(--dusty-rose,#b47a84)] mt-0.5">
+                        {formatDate(todo.createdAt)}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <button

@@ -1,7 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/todos/[id]/route": "app/api/todos/[id]/route.js",
-  "/api/todos/route": "app/api/todos/route.js",
+  "/vision-board/page": "app/vision-board/page.js",
+  "/todos/page": "app/todos/page.js",
+  "/dear-diary/page": "app/dear-diary/page.js",
   "/page": "app/page.js",
-  "/todos/page": "app/todos/page.js"
+  "/play-area/page": "app/play-area/page.js",
+  "/api/todos/route": "app/api/todos/route.js",
+  "/api/vision-board/route": "app/api/vision-board/route.js",
+  "/api/diary/route": "app/api/diary/route.js"
 }
