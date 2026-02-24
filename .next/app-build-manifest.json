@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/dear-diary/page": [
+    "/vision-board/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/dear-diary/page.js"
+      "static/chunks/app/vision-board/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,15 +16,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/dear-diary/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/dear-diary/page.js"
+    ],
     "/todos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/todos/page.js"
-    ],
-    "/vision-board/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/vision-board/page.js"
     ],
     "/play-area/page": [
       "static/chunks/webpack.js",

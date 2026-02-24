@@ -34,9 +34,9 @@ const NavBar = () => {
         </nav>
       </header>
 
-      {/* Mobile Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 z-[100] md:hidden bg-white/80 backdrop-blur-2xl border-t border-[var(--rose)]/20 px-4 pb-8 pt-3 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
-        <div className="flex justify-around items-center max-w-lg mx-auto">
+      {/* Mobile Bottom Nav - Floating Pill Design */}
+      <nav className="fixed bottom-6 left-4 right-4 z-[100] md:hidden bg-white/80 backdrop-blur-2xl border border-[var(--rose)]/30 px-2 py-2 rounded-full shadow-[0_15px_35px_rgba(226,139,157,0.25)]">
+        <div className="flex justify-around items-center max-w-md mx-auto">
           {navLinks.map((link) => (
             <NavItem key={link.href} href={link.href} active={isActive(link.href)} label={link.label} emoji={link.emoji} />
           ))}
@@ -73,16 +73,16 @@ const NavItem = ({ href, active, label, emoji, desktop }: NavItemProps) => {
     );
   }
 
-  // Mobile Implementation
+  // Mobile Implementation - Specially Slimmed
   return (
-    <Link href={href} className="flex flex-col items-center gap-1 min-w-[64px] relative">
+    <Link href={href} className="flex flex-col items-center gap-0.5 min-w-[50px] relative">
       <motion.div
-        animate={active ? { y: -4, scale: 1.1 } : { y: 0, scale: 1 }}
-        className={`text-2xl transition-all ${active ? 'opacity-100' : 'opacity-40'}`}
+        animate={active ? { y: -2, scale: 1.1 } : { y: 0, scale: 1 }}
+        className={`text-xl transition-all ${active ? 'opacity-100' : 'opacity-40'}`}
       >
         {emoji}
       </motion.div>
-      <span className={`text-[10px] font-bold uppercase tracking-widest transition-all ${active ? 'text-[var(--rose)] opacity-100' : 'text-gray-400 opacity-60'}`}>
+      <span className={`text-[8px] font-black uppercase tracking-widest transition-all ${active ? 'text-[var(--rose)] opacity-100' : 'text-gray-400 opacity-60'}`}>
         {label === "Vision" ? "Dream" : label}
       </span>
       {active && (

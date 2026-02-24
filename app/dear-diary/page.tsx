@@ -34,9 +34,8 @@ export default function DearDiaryPage() {
         const d = new Date(iso);
         if (Number.isNaN(d.getTime())) return "";
         return d.toLocaleDateString(undefined, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
+            weekday: 'short',
+            month: 'short',
             day: 'numeric'
         });
     };
@@ -95,7 +94,6 @@ export default function DearDiaryPage() {
 
             if (res.ok) {
                 setEntries((prev) => prev.filter((entry) => entry.id !== id));
-                // Small sad confetti but also cleansing
                 confetti({
                     particleCount: 20,
                     spread: 30,
@@ -109,16 +107,8 @@ export default function DearDiaryPage() {
     };
 
     return (
-        <main className="min-h-screen pb-40 relative bg-[#fffafb] overflow-hidden">
-            {/* Sparkly Background */}
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-[10%] left-[10%] text-pink-200/20 text-4xl animate-pulse">✨</div>
-                <div className="absolute top-[30%] right-[15%] text-pink-200/20 text-5xl animate-bounce" style={{ animationDuration: '4s' }}>🌸</div>
-                <div className="absolute bottom-[20%] left-[5%] text-yellow-200/20 text-6xl animate-pulse">☁️</div>
-                <div className="absolute bottom-[40%] right-[10%] text-pink-200/20 text-4xl animate-bounce" style={{ animationDuration: '3s' }}>💖</div>
-            </div>
-
-            <header className="relative z-10 pt-20 pb-16 text-center">
+        <main className="min-h-screen pb-40 relative overflow-hidden">
+            <header className="relative z-10 pt-8 md:pt-20 pb-8 md:pb-16 text-center">
                 <motion.div
                     initial={{ y: -30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -128,41 +118,41 @@ export default function DearDiaryPage() {
                         <motion.span
                             animate={{ rotate: [0, 20, -20, 0] }}
                             transition={{ repeat: Infinity, duration: 4 }}
-                            className="absolute -top-8 -left-12 text-5xl"
+                            className="absolute -top-6 -left-6 md:-top-8 md:-left-12 text-2xl md:text-5xl"
                         >
                             🎀
                         </motion.span>
-                        <h1 className="font-serif text-6xl md:text-8xl text-[#4a3b3d] tracking-tighter drop-shadow-sm">
+                        <h1 className="font-serif text-3xl md:text-8xl text-[#4a3b3d] tracking-tighter drop-shadow-sm font-bold">
                             Dear <span className="text-[#e28b9d] italic">Diary</span>
                         </h1>
                         <motion.span
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ repeat: Infinity, duration: 2 }}
-                            className="absolute -bottom-6 -right-14 text-5xl"
+                            className="absolute -bottom-4 -right-10 md:-bottom-6 md:-right-14 text-2xl md:text-5xl"
                         >
                             🧸
                         </motion.span>
                     </div>
-                    <p className="font-caveat text-3xl text-[#6b5b5d] mt-6 opacity-80">
+                    <p className="font-caveat text-lg md:text-3xl text-[#6b5b5d] mt-2 md:mt-4 opacity-80 px-4">
                         Whisper your secrets to the stars... ✨
                     </p>
                 </motion.div>
             </header>
 
-            <section className="relative z-10 max-w-3xl mx-auto px-4 mb-24">
+            <section className="relative z-10 max-w-2xl md:max-w-3xl mx-auto px-4 mb-12 md:mb-24">
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="bg-white rounded-[3rem] shadow-[0_40px_100px_rgba(226,139,157,0.15)] border-8 border-[#fff1f3] relative overflow-hidden group"
+                    className="bg-white rounded-[1.5rem] md:rounded-[3rem] shadow-[0_30px_80px_rgba(226,139,157,0.12)] border-2 md:border-8 border-[#fff1f3] relative overflow-hidden group"
                 >
-                    <div className="h-6 bg-gradient-to-r from-[#e28b9d]/30 via-[#e28b9d]/10 to-[#e28b9d]/30 w-full" />
-                    <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-10">
-                        <div className="space-y-6">
-                            <label className="font-serif text-2xl text-[#4a3b3d] flex items-center gap-3">
+                    <div className="h-3 md:h-6 bg-gradient-to-r from-[#e28b9d]/30 via-[#e28b9d]/10 to-[#e28b9d]/30 w-full" />
+                    <form onSubmit={handleSubmit} className="p-4 md:p-12 space-y-5 md:space-y-10">
+                        <div className="space-y-3 md:space-y-6">
+                            <label className="font-serif text-lg md:text-2xl text-[#4a3b3d] flex items-center gap-2">
                                 <span>Mood check:</span>
-                                <span className="text-sm font-sans uppercase tracking-[0.2em] text-[#e28b9d] font-bold">Today is {MOODS.find(m => m.emoji === selectedMood)?.label}</span>
+                                <span className="text-[9px] md:text-sm font-sans uppercase tracking-[0.1em] text-[#e28b9d] font-bold">{MOODS.find(m => m.emoji === selectedMood)?.label}</span>
                             </label>
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-2 md:gap-4">
                                 {MOODS.map((m) => (
                                     <motion.button
                                         key={m.emoji}
@@ -170,8 +160,8 @@ export default function DearDiaryPage() {
                                         whileHover={{ scale: 1.2 }}
                                         whileTap={{ scale: 0.9 }}
                                         onClick={() => setSelectedMood(m.emoji)}
-                                        className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl transition-all shadow-sm ${selectedMood === m.emoji
-                                            ? "bg-[#e28b9d] text-white shadow-[#e28b9d]/40 shadow-xl -translate-y-2"
+                                        className={`w-9 h-9 md:w-14 md:h-14 rounded-lg md:rounded-2xl flex items-center justify-center text-lg md:text-3xl transition-all shadow-sm ${selectedMood === m.emoji
+                                            ? "bg-[#e28b9d] text-white shadow-[#e28b9d]/30 shadow-lg -translate-y-1"
                                             : "bg-[#fffdfd] hover:bg-[#fff1f3] text-gray-400"
                                             }`}
                                     >
@@ -186,15 +176,16 @@ export default function DearDiaryPage() {
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                                 placeholder="Once upon a time..."
-                                className="w-full h-80 bg-[#fffdfa] border-none focus:ring-0 p-10 font-caveat text-3xl text-[#4a3b3d] placeholder:opacity-20 resize-none rounded-[2rem] shadow-inner transition-all leading-[3.5rem]"
+                                className="w-full h-48 md:h-80 bg-[#fffdfa] border-none focus:ring-0 p-5 md:p-10 font-caveat text-xl md:text-3xl text-[#4a3b3d] placeholder:opacity-20 resize-none rounded-[1rem] md:rounded-[2rem] shadow-inner transition-all leading-[2rem] md:leading-[3.5rem]"
                                 style={{
                                     backgroundImage: "linear-gradient(#f9f0f2 1px, transparent 1px)",
-                                    backgroundSize: "100% 3.5rem",
-                                    paddingTop: "3rem"
+                                    backgroundSize: "100% 2rem md:3.5rem",
+                                    paddingTop: "1.5rem"
                                 }}
                             />
-                            <div className="absolute top-6 left-6 w-1.5 h-[calc(100%-3rem)] bg-[#e28b9d]/20 rounded-full" />
-                            <div className="absolute bottom-6 right-8 text-4xl opacity-20 group-focus-within/input:opacity-100 transition-opacity">🖋️</div>
+                            <div className="absolute top-3 left-3 w-1 h-[calc(100%-1.5rem)] bg-[#e28b9d]/15 rounded-full md:hidden" />
+                            <div className="absolute top-6 left-6 w-1.5 h-[calc(100%-3rem)] bg-[#e28b9d]/20 rounded-full hidden md:block" />
+                            <div className="absolute bottom-3 right-4 text-xl md:text-4xl opacity-20 group-focus-within/input:opacity-100 transition-opacity">🖋️</div>
                         </div>
 
                         <motion.button
@@ -202,15 +193,15 @@ export default function DearDiaryPage() {
                             whileTap={{ scale: 0.95 }}
                             type="submit"
                             disabled={saving || !content.trim()}
-                            className="w-full py-6 rounded-2xl bg-[#4a3b3d] text-white font-bold text-xl shadow-[0_20px_40px_rgba(74,59,61,0.3)] hover:bg-black disabled:opacity-30 transition-all flex items-center justify-center gap-4"
+                            className="w-full py-3 md:py-6 rounded-xl md:rounded-2xl bg-[#4a3b3d] text-white font-bold text-base md:text-xl shadow-[0_15px_30px_rgba(74,59,61,0.2)] hover:bg-black disabled:opacity-30 transition-all flex items-center justify-center gap-4"
                         >
-                            {saving ? "Locking it away..." : "Save this memory ✨"}
+                            {saving ? "Locking it away..." : "Save memory ✨"}
                         </motion.button>
                     </form>
                 </motion.div>
             </section>
 
-            <section className="relative z-10 max-w-3xl mx-auto px-4 space-y-16">
+            <section className="relative z-10 max-w-3xl mx-auto px-4 space-y-10 md:space-y-16">
                 <AnimatePresence mode="popLayout">
                     {entries.map((entry, index) => (
                         <motion.div
@@ -219,20 +210,20 @@ export default function DearDiaryPage() {
                             whileInView={{ y: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-white p-12 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.03)] border-2 border-[#fff1f3] relative group"
+                            className="bg-white p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.03)] border-2 border-[#fff1f3] relative group"
                         >
                             {/* Cuter Delete Button */}
                             <button
                                 onClick={() => handleDelete(entry.id)}
-                                className="absolute top-8 right-8 w-12 h-12 rounded-full bg-red-50 text-red-300 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                                className="absolute top-4 right-4 md:top-8 md:right-8 w-8 h-8 md:w-12 md:h-12 rounded-full bg-red-50 text-red-300 flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 hover:bg-red-500 hover:text-white transition-all shadow-sm"
                                 title="Forget this entry"
                             >
-                                <span className="text-2xl">×</span>
+                                <span className="text-xl md:text-2xl">×</span>
                             </button>
 
                             {/* Washi Tape */}
                             <div
-                                className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 z-10 opacity-70"
+                                className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-24 md:w-32 h-6 md:h-8 z-10 opacity-70"
                                 style={{
                                     background: index % 2 === 0 ? '#e28b9d' : '#ffd700',
                                     clipPath: 'polygon(0% 15%, 10% 0%, 20% 15%, 30% 0%, 40% 15%, 50% 0%, 60% 15%, 70% 0%, 80% 15%, 90% 0%, 100% 15%, 100% 85%, 90% 100%, 80% 85%, 70% 100%, 60% 85%, 50% 100%, 40% 85%, 30% 100%, 20% 85%, 10% 100%, 0% 85%)',
@@ -240,37 +231,37 @@ export default function DearDiaryPage() {
                                 }}
                             />
 
-                            <div className="absolute -top-8 -left-6 text-6xl drop-shadow-md">
+                            <div className="absolute -top-6 -left-4 md:-top-8 md:-left-6 text-4xl md:text-6xl drop-shadow-md">
                                 {entry.mood}
                             </div>
 
-                            <div className="space-y-6 pt-4">
-                                <div className="flex items-center gap-3">
+                            <div className="space-y-4 md:space-y-6 pt-2 md:pt-4">
+                                <div className="flex items-center gap-2 md:gap-3">
                                     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#e28b9d]/30 to-transparent" />
-                                    <p className="text-xs uppercase tracking-[0.3em] font-bold text-[#e28b9d]">
+                                    <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold text-[#e28b9d]">
                                         {formatDate(entry.createdAt)}
                                     </p>
                                     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#e28b9d]/30 to-transparent" />
                                 </div>
-                                <p className="font-caveat text-4xl text-[#4a3b3d] leading-relaxed whitespace-pre-wrap px-4">
+                                <p className="font-caveat text-2xl md:text-4xl text-[#4a3b3d] leading-relaxed whitespace-pre-wrap px-2 md:px-4">
                                     {entry.content}
                                 </p>
                             </div>
 
                             {/* Decorative stickers */}
-                            {index % 3 === 0 && <div className="absolute -bottom-6 -left-4 text-5xl rotate-12 drop-shadow-sm select-none">🍯</div>}
-                            {index % 3 === 1 && <div className="absolute -bottom-8 -right-4 text-6xl -rotate-12 drop-shadow-sm select-none">🦋</div>}
-                            {index % 3 === 2 && <div className="absolute bottom-10 -right-8 text-5xl rotate-45 drop-shadow-sm select-none">✨</div>}
+                            {index % 3 === 0 && <div className="absolute -bottom-4 -left-3 text-3xl md:text-5xl rotate-12 drop-shadow-sm select-none">🍯</div>}
+                            {index % 3 === 1 && <div className="absolute -bottom-5 -right-3 text-4xl md:text-6xl -rotate-12 drop-shadow-sm select-none">🦋</div>}
+                            {index % 3 === 2 && <div className="absolute bottom-6 -right-6 text-3xl md:text-5xl rotate-45 drop-shadow-sm select-none">✨</div>}
                         </motion.div>
                     ))}
                 </AnimatePresence>
 
                 {loading && (
-                    <div className="text-center py-20">
+                    <div className="text-center py-16 md:py-20">
                         <motion.div
                             animate={{ rotate: 360 }}
                             transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-                            className="text-6xl"
+                            className="text-4xl md:text-6xl"
                         >
                             🍥
                         </motion.div>
@@ -278,9 +269,9 @@ export default function DearDiaryPage() {
                 )}
 
                 {!loading && entries.length === 0 && (
-                    <div className="text-center py-40">
-                        <div className="text-9xl mb-8 opacity-10">🕯️</div>
-                        <p className="font-serif italic text-2xl text-gray-300">Your secret garden is waiting to grow...</p>
+                    <div className="text-center py-24 md:py-40">
+                        <div className="text-7xl md:text-9xl mb-6 md:mb-8 opacity-10">🕯️</div>
+                        <p className="font-serif italic text-xl md:text-2xl text-gray-300">Your secret garden is waiting to grow...</p>
                     </div>
                 )}
             </section>
