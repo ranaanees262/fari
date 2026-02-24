@@ -7,7 +7,7 @@ if (!uri) {
 }
 
 let client: MongoClient;
-let clientPromise: Promise<MongoClient> | undefined;
+let clientPromise: Promise<MongoClient>;
 
 declare global {
   // eslint-disable-next-line no-var
@@ -21,11 +21,6 @@ if (process.env.NODE_ENV === "development") {
   }
   clientPromise = global._mongoClientPromise;
 } else {
-  client = new MongoClient(uri);
-  clientPromise = client.connect();
-}
-
-if (!clientPromise) {
   client = new MongoClient(uri);
   clientPromise = client.connect();
 }

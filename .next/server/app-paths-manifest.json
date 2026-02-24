@@ -1,5 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/todos/[id]/route": "app/api/todos/[id]/route.js",
-  "/todos/page": "app/todos/page.js",
-  "/api/todos/route": "app/api/todos/route.js"
+  "/api/todos/route": "app/api/todos/route.js",
+  "/page": "app/page.js",
+  "/todos/page": "app/todos/page.js"
 }
